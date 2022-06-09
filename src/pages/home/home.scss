@@ -1,0 +1,26 @@
+@use "../../scss/index.scss" as *;
+
+.dashboard {
+    padding: 12px;
+
+    &-title {
+        font-weight: 600;
+        font-size: 1.8rem;
+        color: $txt-color;
+        margin: 25px 0 25px 12px;
+    }
+
+    &-wrapper {
+        margin-bottom: 12px;
+        .col-6.row {
+            padding: 0;
+        }
+        .chart-col {
+            &-wrapper {
+                box-shadow: $box-shadow;
+                border-radius: 15px;
+                padding: 0 12px;
+            }
+        }
+    }
+}

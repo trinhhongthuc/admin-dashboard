@@ -1,0 +1,256 @@
+@use "../../scss/index.scss" as *;
+
+.top-nav {
+    @include flex(space-between, center);
+    padding: 10px 15px;
+
+    &__search {
+        width: 300px;
+        background-color: $main-bg;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+
+        input {
+            color: $txt-color;
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding: 12px 12px;
+        }
+
+        svg {
+            font-size: 1.8rem;
+            color: $txt-color;
+            width: 40px;
+        }
+    }
+
+    &__info {
+        @include flex(flex-end, center);
+        .avatar {
+            @include flex(flex-start, center);
+            position: relative;
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            > span {
+                font-weight: 500;
+                font-size: 1.6rem;
+                color: $txt-color;
+                margin-left: 12px;
+            }
+        }
+
+        &-dropdown {
+            li {
+                &:hover span,
+                &:hover svg {
+                    color: $second-color;
+                }
+            }
+        }
+        > .avatar {
+            cursor: pointer;
+        }
+
+        .notify,
+        .color {
+            position: relative;
+            > svg {
+                font-size: 2.2rem;
+                color: $txt-color;
+                margin-left: 18px;
+                cursor: pointer;
+            }
+        }
+
+        .notify {
+            position: relative;
+            > span {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                font-size: 1.2rem;
+                color: #fff;
+                background-color: #62b4ff;
+                top: -12px;
+                right: -8px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 20px;
+            }
+            .top-nav__notify-dropdown {
+                max-width: 400px;
+                width: 400px;
+
+                > p {
+                    padding: 12px 0;
+                    padding-bottom: 18px;
+                    text-transform: capitalize;
+                    text-align: center;
+                    color: $txt-color;
+                    font-weight: 400;
+                    font-size: 1.4rem;
+
+                    &:hover {
+                        color: $second-color;
+                    }
+                }
+            }
+        }
+
+        .drop-right__wrapper {
+            position: fixed;
+            right: -310px;
+            width: 300px;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            background-color: $main-bg;
+            box-shadow: $box-shadow;
+            z-index: 99;
+            padding: 30px 15px;
+
+            &.active {
+                right: 0;
+                transition: all 0.8s $transition-cubic;
+            }
+
+            &-close {
+                @include flex(space-between, center);
+                margin-bottom: 18px;
+
+                p {
+                    margin: 0;
+                    font-size: 1.6rem;
+                    color: $txt-color;
+                    font-weight: 500;
+                }
+
+                svg {
+                    font-size: 2.2rem;
+                    cursor: pointer;
+                }
+            }
+
+            &-title {
+                font-size: 1.4rem;
+                color: rgba($color: $txt-color, $alpha: 0.8);
+                font-weight: 400;
+            }
+
+            &-list {
+                padding: 12px 0;
+
+                &-text {
+                    font-size: 1.3rem;
+                    color: $txt-color;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                }
+
+                &-color {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: red;
+                    display: inline-block;
+                    margin-right: 8px;
+                    cursor: pointer;
+
+                    @include flex(center, center);
+
+                    svg {
+                        opacity: 0;
+                    }
+
+                    &.active svg {
+                        opacity: 1;
+                    }
+
+                    &__blue {
+                        background-color: blue;
+                    }
+                    &__green {
+                        background-color: green;
+                    }
+
+                    &__red {
+                        background-color: red;
+                    }
+                }
+
+                &-color-light {
+                    border: 2px solid #333;
+                    background-color: #fff;
+                    svg {
+                        color: #333;
+                        opacity: 0;
+                    }
+                }
+
+                &-color-dark {
+                    background-color: #333;
+                    svg {
+                        color: #fff;
+                    }
+                }
+
+                li {
+                    @include flex(flex-start, center);
+                    padding: 8px 0;
+                }
+            }
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: calc(100% + 15px);
+        right: 0;
+        background-color: $main-bg;
+        box-shadow: $box-shadow;
+        border-radius: 5px;
+        z-index: 99;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: top right;
+
+        &.active {
+            opacity: 1;
+            transform: scale(1);
+            transition: transform 0.5s $transition-cubic;
+        }
+
+        > li {
+            @include flex(flex-start, center);
+            padding: 12px 18px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($color: $hover-color-ddd, $alpha: 0.4);
+                transition: background 0.5s ease;
+            }
+
+            svg {
+                font-size: 2.3rem;
+                color: $txt-color;
+                margin-right: 8px;
+            }
+
+            span {
+                color: $txt-color;
+                font-size: 1.4rem;
+                font-weight: 400;
+            }
+        }
+    }
+}

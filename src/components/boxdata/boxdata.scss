@@ -1,0 +1,65 @@
+@use "../../scss/index.scss" as *;
+
+.box-data {
+    box-shadow: $box-shadow;
+    width: 100%;
+    height: 135px;
+    border-radius: 15px;
+    background-color: $main-bg;
+    position: relative;
+    @include flex(unset, unset);
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -50%;
+        bottom: -50%;
+        background-color: $second-color;
+        transform: scale(0);
+        border-radius: 50%;
+        transition: all 0.8s ease 0s;
+        z-index: 1;
+    }
+
+    &:hover::before {
+        transform: scale(3);
+    }
+
+    &:hover &__wrapper .title,
+    &:hover &__wrapper .note,
+    &:hover &__avatar svg {
+        color: $txt-hover-color;
+        z-index: 10;
+    }
+
+    &__avatar {
+        @include flex(center, center);
+        width: 50%;
+        svg {
+            font-size: 3.3rem;
+            color: $txt-color;
+        }
+    }
+
+    &__wrapper {
+        width: 50%;
+        @include flex(center, center);
+        flex-direction: column;
+
+        .title {
+            font-size: 2.8rem;
+            color: $txt-color;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .note {
+            font-size: 1.2rem;
+            color: $txt-color;
+            text-transform: capitalize;
+        }
+    }
+}

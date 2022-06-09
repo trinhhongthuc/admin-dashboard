@@ -1,0 +1,12 @@
+@use "../../scss/index.scss" as *;
+
+.ticker {
+    padding: 12px;
+
+    &-title {
+        margin: 25px 0 25px 12px;
+        font-weight: 600;
+        font-size: 1.8rem;
+        color: $txt-color;
+    }
+}

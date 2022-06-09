@@ -1,0 +1,71 @@
+@use "../../scss/index.scss" as *;
+
+.table {
+    box-shadow: $box-shadow;
+    border-radius: 15px;
+    padding: 20px;
+
+    &-title {
+        font-size: 1.6rem;
+        color: $txt-color;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    table {
+        width: 100%;
+        border-spacing: 0;
+        tr {
+            th {
+                text-align: start;
+                font-weight: 500;
+                font-size: 1.3rem;
+                color: $txt-color;
+                padding: 10px 0;
+            }
+        }
+    }
+
+    tbody tr td {
+        text-align: start;
+        font-size: 1.3rem;
+        color: $txt-color;
+        padding: 10px 0;
+    }
+
+    &-view {
+        text-align: center;
+        padding: 10px 0 0 0;
+        font-size: 1.5rem;
+        color: $txt-color;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    .pagination {
+        @include flex(flex-end, center);
+        margin-top: 15px;
+
+        li {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            @include flex(center, center);
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            background-color: transparent;
+            color: $txt-color;
+
+            & ~ li {
+                margin-left: 8px;
+            }
+
+            &.active {
+                background-color: $second-color;
+                color: $txt-white;
+            }
+        }
+    }
+}
